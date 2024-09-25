@@ -18,6 +18,4 @@ const Row = styled.div`
 Row.defaultProps = {
   type: "vertical",
 };
-//we can just use row tag only in app and it still will be vertical
-
 export default Row;
