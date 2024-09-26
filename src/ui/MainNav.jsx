@@ -1,4 +1,9 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { HiOutlineBuildingOffice, HiOutlineHome } from "react-icons/hi2";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { IoSettingsOutline } from "react-icons/io5";
+import { RiUserSearchLine } from "react-icons/ri";
 
 const NavList = styled.ul`
   display: flex;
@@ -6,7 +11,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -20,13 +25,12 @@ const Link = styled.a`
     transition: all 0.3s;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,
   &.active:visited {
-    color: var(--color-grey-800);
-    background-color: var(--color-grey-50);
+    color: var(--color-grey-900);
+    background-color: var(--color-grey-100);
     border-radius: var(--border-radius-sm);
   }
 
@@ -44,3 +48,44 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+function MainNav() {
+  return (
+    <nav>
+      <NavList>
+        <li>
+          <StyledNavLink to="/dashboard">
+            <HiOutlineHome />
+            <span>Home</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/bookings">
+            <MdOutlineCalendarMonth />
+            <span>Bookings</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/cabins">
+            <HiOutlineBuildingOffice />
+            <span>Cabins</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/users">
+            <RiUserSearchLine />
+            <span>Users</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/settings">
+            <IoSettingsOutline />
+            <span>Settings</span>
+          </StyledNavLink>
+        </li>
+      </NavList>
+    </nav>
+  );
+}
+
+export default MainNav;
